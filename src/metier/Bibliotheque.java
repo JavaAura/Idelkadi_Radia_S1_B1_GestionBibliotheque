@@ -21,8 +21,11 @@ public class Bibliotheque {
 		}
 	}
 
-	public void RetournerDocument() {
-
+	public void RetournerDocument(String titre) {
+		Document doc = this.RechercherDocument(titre);
+		if (doc != null) {
+			doc.retourner();
+		}
 	}
 
 	public void AfficherTousDocuments() {

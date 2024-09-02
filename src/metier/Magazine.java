@@ -25,8 +25,13 @@ public class Magazine extends Document {
 
 	@Override
 	public void retourner() {
-		// TODO Auto-generated method stub
+		if (this.estEmprunte) {
+			this.estEmprunte = false;
+			System.out.println("la magazine est retourné avec succes.");
+		} else {
+			System.out.println("la magazine n'est pas emprunte.");
 
+		}
 	}
 
 	@Override

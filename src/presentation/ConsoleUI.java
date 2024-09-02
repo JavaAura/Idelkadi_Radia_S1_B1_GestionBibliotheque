@@ -98,26 +98,29 @@ public class ConsoleUI {
 	private static void emprunterDocument() {
 		scanner.nextLine();
 		System.out.println("Quel est le titre du document que vous voulez emprunter?");
-		String titreDoc= scanner.nextLine();
+		String titreDoc = scanner.nextLine();
 		bibliotheque.EmprunterDocument(titreDoc);
 	}
 
 	private static void retournerDocument() {
-
+		scanner.nextLine();
+		System.out.println("Titre du document retourner : ");
+		String titreDoc = scanner.nextLine();
+		bibliotheque.RetournerDocument(titreDoc);
 	}
 
 	private static void afficherTousLesDocuments() {
 		bibliotheque.AfficherTousDocuments();
 	}
-    
+
 	private static void rechercherDocument() {
 		scanner.nextLine();
 		System.out.println("Le titre du document que vous voulez rechercher ?");
 		String titreDoc = scanner.nextLine();
-		
+
 		Document docRecherche = bibliotheque.RechercherDocument(titreDoc);
-		
-		if(docRecherche!= null) {
+
+		if (docRecherche != null) {
 			docRecherche.afficherDetails();
 		}
 	}
