@@ -8,6 +8,7 @@ public class Magazine extends Document {
 	public Magazine(int ID, String Titre, String Auteur, LocalDate DateDePublication, int NombreDePages, int Numero) {
 		super(ID, Titre, Auteur, DateDePublication, NombreDePages);
 		this.numero = Numero;
+		this.type = "Magazine";
 	}
 
 	@Override
@@ -24,8 +25,9 @@ public class Magazine extends Document {
 
 	@Override
 	public void afficherDetails() {
-		// TODO Auto-generated method stub
-
+		System.out.printf(
+				"Type : %s , ID : %d , Titre : %s , Auteur : %s , Date de publication : %s , Nombre de pages : %d , Numero : %d .\n",
+				this.type, this.id, this.titre, this.auteur, this.datePublication, this.nombreDePages, this.numero);
 	}
 
 }

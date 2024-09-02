@@ -56,6 +56,7 @@ public class ConsoleUI {
 		System.out.println("Quel type de Document que vous voulez inserer? (1-Livre , 2-Magazine)");
 		int type = scanner.nextInt();
 
+		scanner.nextLine();
 		Random rand = new Random();
 		int id = rand.nextInt(1000);
 
@@ -103,6 +104,7 @@ public class ConsoleUI {
 	}
 
 	private static void afficherTousLesDocuments() {
+		bibliotheque.AfficherTousDocuments();
 	}
 
 	private static void rechercherDocument() {
