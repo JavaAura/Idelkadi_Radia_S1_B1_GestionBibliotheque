@@ -14,8 +14,13 @@ public class Livre extends Document {
 
 	@Override
 	public void emprunter() {
-		// TODO Auto-generated method stub
+		if (this.estEmprunte) {
+			System.out.println("le Livre est déjà emprunte");
+		} else {
+			this.estEmprunte = true;
+			System.out.println("le livre est emprunte avec succes ");
 
+		}
 	}
 
 	@Override
@@ -26,7 +31,7 @@ public class Livre extends Document {
 
 	@Override
 	public void afficherDetails() {
-		      System.out.printf("Type : %s , ID : %d , Titre : %s , Auteur : %s , Date de publication : %s , Nombre de pages : %d , ISBN : %d .", this.type , this.id , this.titre, this.auteur , this.datePublication , this.nombreDePages , this.ISBN);	    
+		      System.out.printf("Type : %s , ID : %d , Titre : %s , Auteur : %s , Date de publication : %s , Nombre de pages : %d , ISBN : %d , Emprunte : %d .\n", this.type , this.id , this.titre, this.auteur , this.datePublication , this.nombreDePages , this.ISBN , this.estEmprunte);	    
 	}
 
 }

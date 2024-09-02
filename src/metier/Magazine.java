@@ -13,9 +13,15 @@ public class Magazine extends Document {
 
 	@Override
 	public void emprunter() {
-		// TODO Auto-generated method stub
+		if (this.estEmprunte) {
+			System.out.println("la magazine est déjà emprunte");
+		} else {
+			this.estEmprunte = true;
+			System.out.println("la magazine est emprunte avec succes ");
 
+		}
 	}
+
 
 	@Override
 	public void retourner() {
@@ -26,8 +32,8 @@ public class Magazine extends Document {
 	@Override
 	public void afficherDetails() {
 		System.out.printf(
-				"Type : %s , ID : %d , Titre : %s , Auteur : %s , Date de publication : %s , Nombre de pages : %d , Numero : %d .\n",
-				this.type, this.id, this.titre, this.auteur, this.datePublication, this.nombreDePages, this.numero);
+				"Type : %s , ID : %d , Titre : %s , Auteur : %s , Date de publication : %s , Nombre de pages : %d , Numero : %d  , Emprunte : %d .\n",
+				this.type, this.id, this.titre, this.auteur, this.datePublication, this.nombreDePages, this.numero , this.estEmprunte);
 	}
 
 }

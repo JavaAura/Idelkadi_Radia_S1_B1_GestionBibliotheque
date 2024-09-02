@@ -2,7 +2,6 @@ package metier;
 
 import java.util.*;
 
-
 public class Bibliotheque {
 	public ArrayList<Document> documents = new ArrayList<Document>();
 	public HashMap<String, Document> rechercheDocument = new HashMap<String, Document>();
@@ -15,8 +14,11 @@ public class Bibliotheque {
 
 	}
 
-	public void EmprunterDocument() {
-
+	public void EmprunterDocument(String titre) {
+		Document doc = this.RechercherDocument(titre);
+		if (doc != null) {
+			doc.emprunter();
+		}
 	}
 
 	public void RetournerDocument() {
@@ -28,5 +30,15 @@ public class Bibliotheque {
 			doc.afficherDetails();
 		}
 
+	}
+
+	public Document RechercherDocument(String titreDoc) {
+		Document doc = rechercheDocument.get(titreDoc);
+		if (doc != null) {
+			return doc;
+		} else {
+			System.out.println("Document introuvable.");
+			return null;
+		}
 	}
 }
