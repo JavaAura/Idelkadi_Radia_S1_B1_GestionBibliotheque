@@ -1,10 +1,111 @@
 package presentation;
 
+import java.time.LocalDate;
+import java.util.Random;
+import java.util.Scanner;
+
+import metier.*;
+import utilitaire.DateUtils;
+
 public class ConsoleUI {
+	private static Bibliotheque bibliotheque = new Bibliotheque();
+	private static Scanner scanner = new Scanner(System.in);
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		int choix;
+		do {
+			afficherMenu();
+			choix = scanner.nextInt();
+			switch (choix) {
+			case 1:
+				ajouterDocument();
+				break;
+			case 2:
+				emprunterDocument();
+				break;
+			case 3:
+				retournerDocument();
+				break;
+			case 4:
+				afficherTousLesDocuments();
+				break;
+			case 5:
+				rechercherDocument();
+				break;
+			case 6:
+				System.out.println("Au revoir!");
+				break;
+			default:
+				System.out.println("Choix invalide, veuillez réessayer.");
+			}
+		} while (choix != 6);
+	}
+
+	private static void afficherMenu() {
+		System.out.println("\nMenu:");
+		System.out.println("1. Ajouter un document");
+		System.out.println("2. Emprunter un document");
+		System.out.println("3. Retourner un document");
+		System.out.println("4. Afficher tous les documents");
+		System.out.println("5. Rechercher un document");
+		System.out.println("6. Quitter");
+		System.out.print("Veuillez entrer votre choix (1-6) : ");
+	}
+
+	private static void ajouterDocument() {
+		System.out.println("Quel type de Document que vous voulez inserer? (1-Livre , 2-Magazine)");
+		int type = scanner.nextInt();
+
+		Random rand = new Random();
+		int id = rand.nextInt(1000);
+
+		System.out.println("Titre:");
+		String titre = scanner.nextLine();
+
+		System.out.println("Auteur:");
+		String auteur = scanner.nextLine();
+
+		System.out.print("Date de publication (YYYY-MM-DD) : ");
+		String dateStr = scanner.nextLine();
+		LocalDate datePublication = DateUtils.convertStringToDate(dateStr);
+
+		System.out.println("Nombre de pages:");
+		int nbrpages = scanner.nextInt();
+
+		if (type == 1) {
+
+			System.out.println("ISBN:");
+			int isbn = scanner.nextInt();
+
+			Livre livre = new Livre(id, titre, auteur, datePublication, nbrpages, isbn);
+			bibliotheque.AjouterDocument(livre);
+
+		} else if (type == 2) {
+
+			System.out.println("Numero:");
+			int numero = scanner.nextInt();
+
+			Magazine magazine = new Magazine(id, titre, auteur, datePublication, nbrpages, numero);
+			bibliotheque.AjouterDocument(magazine);
+
+		} else {
+			System.out.println("Type de document invalide.");
+		}
 
 	}
 
+	private static void emprunterDocument() {
+
+	}
+
+	private static void retournerDocument() {
+
+	}
+
+	private static void afficherTousLesDocuments() {
+	}
+
+	private static void rechercherDocument() {
+
+	}
 }

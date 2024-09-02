@@ -23,5 +23,9 @@ public abstract class Document {
 	public abstract void retourner();
 
 	public abstract void afficherDetails();
+	
+	public String getTitre() {
+		return this.titre;
+	}
 
 }
