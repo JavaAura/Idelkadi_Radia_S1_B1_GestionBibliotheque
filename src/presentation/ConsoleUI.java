@@ -41,6 +41,7 @@ public class ConsoleUI {
 		} while (choix != 6);
 	}
 
+	//Affiche le menu principal à l'utilisateur
 	private static void afficherMenu() {
 		System.out.println("\nMenu:");
 		System.out.println("1. Ajouter un document");
@@ -51,12 +52,14 @@ public class ConsoleUI {
 		System.out.println("6. Quitter");
 		System.out.print("Veuillez entrer votre choix (1-6) : ");
 	}
+	
+    // Permet d'ajouter un document (Livre ou Magazine) à la bibliothèque.
 
 	private static void ajouterDocument() {
 		System.out.println("Quel type de Document que vous voulez inserer? (1-Livre , 2-Magazine)");
 		int type = scanner.nextInt();
 
-		scanner.nextLine();
+		scanner.nextLine(); // Consomme la nouvelle ligne restante
 		Random rand = new Random();
 		int id = rand.nextInt(1000);
 
@@ -73,7 +76,7 @@ public class ConsoleUI {
 		System.out.println("Nombre de pages:");
 		int nbrpages = scanner.nextInt();
 
-		if (type == 1) {
+		if (type == 1) {// Si l'utilisateur choisit d'ajouter un livre
 
 			System.out.println("ISBN:");
 			int isbn = scanner.nextInt();
@@ -81,7 +84,7 @@ public class ConsoleUI {
 			Livre livre = new Livre(id, titre, auteur, datePublication, nbrpages, isbn);
 			bibliotheque.AjouterDocument(livre);
 
-		} else if (type == 2) {
+		} else if (type == 2) {// Si l'utilisateur choisit d'ajouter magazine
 
 			System.out.println("Numero:");
 			int numero = scanner.nextInt();
@@ -95,33 +98,40 @@ public class ConsoleUI {
 
 	}
 
+	//emprunter un document en fonction de son titre
 	private static void emprunterDocument() {
 		scanner.nextLine();
-		System.out.println("Quel est le titre du document que vous voulez emprunter?");
+        System.out.print("Entrez le titre du document à emprunter : ");
 		String titreDoc = scanner.nextLine();
 		bibliotheque.EmprunterDocument(titreDoc);
 	}
 
+	//retourner un document en fonction de son titre
 	private static void retournerDocument() {
 		scanner.nextLine();
-		System.out.println("Titre du document retourner : ");
+        System.out.print("Entrez le titre du document à retourner : ");
 		String titreDoc = scanner.nextLine();
 		bibliotheque.RetournerDocument(titreDoc);
 	}
 
+	//Affiche tous les documents
 	private static void afficherTousLesDocuments() {
 		bibliotheque.AfficherTousDocuments();
 	}
 
+	//Recherche un document par son titre et affiche ses détails s'il est trouvé
 	private static void rechercherDocument() {
 		scanner.nextLine();
-		System.out.println("Le titre du document que vous voulez rechercher ?");
+        System.out.print("Entrez le titre du document à rechercher : ");
 		String titreDoc = scanner.nextLine();
 
 		Document docRecherche = bibliotheque.RechercherDocument(titreDoc);
 
 		if (docRecherche != null) {
 			docRecherche.afficherDetails();
+		}else {
+			System.out.println("Document introuvable.");
 		}
 	}
+
 }

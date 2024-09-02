@@ -4,21 +4,20 @@ import java.time.LocalDate;
 
 public class Livre extends Document {
 
-	public int ISBN;
+	private int ISBN;
 
 	public Livre(int ID, String Titre, String Auteur, LocalDate DateDePublication, int NombreDePages, int isbn) {
 		super(ID, Titre, Auteur, DateDePublication, NombreDePages);
 		this.ISBN = isbn;
-		this.type = "Livre";
 	}
 
 	@Override
 	public void emprunter() {
 		if (this.estEmprunte) {
-			System.out.println("le Livre est déjà emprunte");
+			System.out.println("Le livre " + this.titre + " est déjà emprunté.");
 		} else {
 			this.estEmprunte = true;
-			System.out.println("le livre est emprunte avec succes ");
+			System.out.println("Le livre " + this.titre + " a été emprunté.");
 
 		}
 	}
@@ -27,18 +26,21 @@ public class Livre extends Document {
 	public void retourner() {
 		if (this.estEmprunte) {
 			this.estEmprunte = false;
-			System.out.println("le Livre est retourné avec succes.");
+		    System.out.println("Le livre " + this.titre + " a été retourné.");
 		} else {
-			System.out.println("le livre n'est pas emprunte.");
+		    System.out.println("Le livre " + this.titre + " n'est pas emprunté.");
 
 		}
 	}
+	
+	
+	
 
 	@Override
 	public void afficherDetails() {
 		System.out.printf(
-				"Type : %s , ID : %d , Titre : %s , Auteur : %s , Date de publication : %s , Nombre de pages : %d , ISBN : %d , Emprunte : %d .\n",
-				this.type, this.id, this.titre, this.auteur, this.datePublication, this.nombreDePages, this.ISBN,
+				"Livre : [ ID : %d , Titre : %s , Auteur : %s , Date de publication : %s , Nombre de pages : %d , ISBN : %d , Emprunte : %b .]\n",
+				 this.id, this.titre, this.auteur, this.datePublication, this.nombreDePages, this.ISBN,
 				this.estEmprunte);
 	}
 
